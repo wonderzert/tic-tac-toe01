@@ -154,7 +154,7 @@ module.exports = function(grunt) {
     // task register section
     grunt.registerTask('build-dev', ['imagemin', 'copy:dev', 'typescript']);
     grunt.registerTask('build-dev-server', ['imagemin', 'copy:dev', 'typescript', 'browserSync', 'watch:dev']);
-    grunt.registerTask('dist', ['imagemin', 'copy:dev', 'typescript', 'copy:dist', 'uglify:dist']);
+    grunt.registerTask('dist', ['build-dev', 'copy:dist', 'uglify:dist']);
     grunt.registerTask('zip', ['dist', 'compress']);
 
     // default task can start dev server, watch files 
