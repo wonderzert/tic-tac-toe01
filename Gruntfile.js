@@ -14,7 +14,7 @@ module.exports = function(grunt) {
         // configure task provided by grunt-typescript plugin
         typescript: {
             base: {
-                src: ['src/ts/game/main.ts'], // which files to select
+                src: ['src/ts/main.ts'], // which files to select
                 dest: 'build/dev-dist/js/main.js', // where they'll go
                 options: {
                     module: 'amd', // module resolving mechanism
