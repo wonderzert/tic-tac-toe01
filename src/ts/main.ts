@@ -1,4 +1,13 @@
+// import config
+/// <reference path="config.ts" />
+
+
+// import phaser
 /// <reference path="../../vendor/ts/phaser.d.ts" />
+
+// import states from Game.States namespace
+/// <reference path="States/InitialConfigState.ts" />
+
 
 
 class MainState extends Phaser.State {
@@ -14,6 +23,6 @@ class MainState extends Phaser.State {
 }
 
 
-let game = new Phaser.Game(400, 400, Phaser.AUTO, '');
+let game = new Phaser.Game(Game.config.width, Game.config.height, Phaser.AUTO, '');
 game.state.add('MainState', MainState);
 game.state.start('MainState');
