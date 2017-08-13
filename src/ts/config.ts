@@ -1,4 +1,11 @@
+/**
+* Represents root source folder
+*/
 namespace Game {
+    /**
+    * Represents all configuration data
+    * needed for any part of app
+    */
     export var config : {
         width?: number,
         height?: number,
