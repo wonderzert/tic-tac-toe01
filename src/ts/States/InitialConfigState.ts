@@ -24,6 +24,9 @@ namespace States {
         * place them somewhere on screen
         */
         create() {
+            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            this.game.scale.pageAlignHorizontally = true;
+            this.game.scale.pageAlignVertically = true;
         }
 
         /**
