@@ -12,7 +12,7 @@
 let game = new Phaser.Game(Game.config.width, Game.config.height, Phaser.AUTO, '');
 
 // adding states
-game.state.add('InitialConfigState', Game.States.InitialConfigState);
+game.state.add('InitialConfigState', States.InitialConfigState);
 
 // start first state
 game.state.start('InitialConfigState');

@@ -1,10 +1,10 @@
-/// <reference path="config.ts" />
+/// <reference path="../config.ts" />
 
 
 /** 
 * Has various tools for debugging
 */
-namespace Debug {
+namespace Utils {
     /**
     * output data to console when Game.config.debug is true
     * Returns true if it really printed something
