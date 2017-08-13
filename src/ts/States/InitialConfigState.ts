@@ -21,7 +21,9 @@ namespace States {
         /**
         * Called once preload is done
         * Used to create instances of all needed objects and
-        * place them somewhere on screen
+        * place them somewhere on screen.
+        * InitialConfigState uses it to setup Phaser.Game object
+        * and start PreparePreloaderState
         */
         create() {
             // show whole scene
@@ -30,6 +32,11 @@ namespace States {
             // center horizontally and vertically
             this.game.scale.pageAlignHorizontally = true;
             this.game.scale.pageAlignVertically = true;
+
+
+            // after needed setup, start
+            // preparing preloader
+            this.game.state.start("PreparePreloaderState");
         }
 
         /**

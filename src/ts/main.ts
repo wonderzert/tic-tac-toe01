@@ -7,12 +7,18 @@
 
 // import states from Game.States namespace
 /// <reference path="States/InitialConfigState.ts" />
+/// <reference path="States/PreparePreloaderState.ts" />
+/// <reference path="States/PreloaderState.ts" />
+
+
 
 // create game object
-let game = new Phaser.Game(Game.config.width, Game.config.height, Phaser.AUTO, '');
+let game = new Phaser.Game(Game.config.width, Game.config.height, Phaser.AUTO, "");
 
 // adding states
-game.state.add('InitialConfigState', States.InitialConfigState);
+game.state.add("InitialConfigState", States.InitialConfigState);
+game.state.add("PreparePreloaderState", States.PreparePreloaderState);
+game.state.add("PreloaderState", States.PreloaderState);
 
 // start first state
-game.state.start('InitialConfigState');
+game.state.start("InitialConfigState");
