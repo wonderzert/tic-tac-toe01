@@ -8,21 +8,11 @@
 // import states from Game.States namespace
 /// <reference path="States/InitialConfigState.ts" />
 
-
-
-class MainState extends Phaser.State {
-    preload() {
-        console.log("state MainState preloading");
-    }
-
-    create() {
-    }
-
-    update() {
-    }
-}
-
-
+// create game object
 let game = new Phaser.Game(Game.config.width, Game.config.height, Phaser.AUTO, '');
-game.state.add('MainState', MainState);
-game.state.start('MainState');
+
+// adding states
+game.state.add('InitialConfigState', Game.States.InitialConfigState);
+
+// start first state
+game.state.start('InitialConfigState');

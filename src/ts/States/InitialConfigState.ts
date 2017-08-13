@@ -1,4 +1,6 @@
 /// <reference path="../../../vendor/ts/phaser.d.ts" />
+/// <reference path="../log.ts" />
+
 
 /**
 * Namespace containing game states
@@ -13,7 +15,7 @@ namespace Game.States {
         * Used to preload assets and etc.
         */
         preload() {
-
+            Debug.log("InitialConfigState started");
         }
 
         /**
