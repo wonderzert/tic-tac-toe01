@@ -13,6 +13,8 @@ namespace States {
         /**
         * Called first when state starts
         * Used to preload assets and etc.
+        * PreloaderState will draw progressbar and
+        * preload all assets needed by game
         */
         preload() {
             Utils.log("PreloaderState started");
