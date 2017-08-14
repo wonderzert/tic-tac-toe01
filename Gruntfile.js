@@ -61,6 +61,13 @@ module.exports = function(grunt) {
         
         // configure task provided by grunt-contrib-copy plugin
         copy: {
+            // sourcemaps to dev dist
+            devsm: {
+                files: [
+                    // to enable easiest access to sourcemaps
+                    {expand: true, cwd: '', src: ['src/ts/**/*.ts'], dest: 'build/dev-dist/'},
+                ]
+            },
             dev: {
                 files: [
                     // copy src/html/dev-dist/index.html to build/dev-dist/index.html
@@ -152,7 +159,7 @@ module.exports = function(grunt) {
     
     // task register section
     grunt.registerTask('build-dev', ['imagemin', 'copy:dev', 'typescript']);
-    grunt.registerTask('build-dev-server', ['imagemin', 'copy:dev', 'typescript', 'browserSync', 'watch:dev']);
+    grunt.registerTask('build-dev-server', ['build-dev', 'browserSync', 'watch:dev']);
     grunt.registerTask('dist', ['build-dev', 'copy:dist', 'uglify:dist']);
     grunt.registerTask('zip', ['dist', 'compress']);
 
