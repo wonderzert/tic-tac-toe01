@@ -88,6 +88,11 @@ namespace States {
         update() {
             if (this.gameField.action_ready()) {
                 this.doActionAndSyncGui();
+
+                let win = this.gameField.check_win();
+                for (let i = 0; i < win.length; i++) {
+                    this.cells[win[i].x][win[i].y].tint = 0xff0000;
+                }
             }
         }
 
