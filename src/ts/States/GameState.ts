@@ -101,7 +101,7 @@ namespace States {
                 }
 
                 // check for draw
-                if (this.gameField.turnCount >= 9) {
+                if ((win.length == 0) && (this.gameField.turnCount >= 9)) {
 
                     // color all cells in green
                     for (let x = 0; x < 3; x++) {
