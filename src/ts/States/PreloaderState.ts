@@ -33,6 +33,10 @@ namespace States {
 
             // use phaser's internal progressbar mechanics
             this.game.load.setPreloadSprite(progressbar1);
+
+
+            // load assets
+            this.game.load.image("img/board.png", "img/board.png");
         }
 
         /**
@@ -41,7 +45,7 @@ namespace States {
         * place them somewhere on screen
         */
         create() {
-
+            this.game.state.start("GameState", true, false);
         }
 
         /**

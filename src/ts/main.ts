@@ -9,6 +9,8 @@
 /// <reference path="States/InitialConfigState.ts" />
 /// <reference path="States/PreparePreloaderState.ts" />
 /// <reference path="States/PreloaderState.ts" />
+/// <reference path="States/GameState.ts" />
+
 
 
 
@@ -19,6 +21,7 @@ let game = new Phaser.Game(Game.config.width, Game.config.height, Phaser.AUTO, "
 game.state.add("InitialConfigState", States.InitialConfigState);
 game.state.add("PreparePreloaderState", States.PreparePreloaderState);
 game.state.add("PreloaderState", States.PreloaderState);
+game.state.add("GameState", States.GameState);
 
 // start first state
 game.state.start("InitialConfigState");
