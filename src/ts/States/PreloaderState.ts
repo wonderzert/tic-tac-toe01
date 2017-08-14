@@ -12,6 +12,11 @@ namespace States {
     * State created to load game assets and show progress bar
     */
     export class PreloaderState extends Phaser.State {
+        // empty progress bar image
+        progressbar0: Phaser.Sprite;
+
+        // full progress bar image
+        progressbar1: Phaser.Sprite;
 
 
         /**
@@ -24,15 +29,15 @@ namespace States {
             Utils.log("PreloaderState started");
 
             // empty progress bar image
-            let progressbar0 = this.game.add.sprite(0, Game.config.height, "img/progressbar0.png");
-            progressbar0.anchor.set(0, 1);
+            this.progressbar0 = this.game.add.sprite(0, Game.config.height, "img/progressbar0.png");
+            this.progressbar0.anchor.set(0, 1);
 
             // full progress bar image
-            let progressbar1 = this.game.add.sprite(0, Game.config.height, "img/progressbar1.png");
-            progressbar1.anchor.set(0, 1);
+            this.progressbar1 = this.game.add.sprite(0, Game.config.height, "img/progressbar1.png");
+            this.progressbar1.anchor.set(0, 1);
 
             // use phaser's internal progressbar mechanics
-            this.game.load.setPreloadSprite(progressbar1);
+            this.game.load.setPreloadSprite(this.progressbar1);
 
 
             // load assets
@@ -45,6 +50,9 @@ namespace States {
         * place them somewhere on screen
         */
         create() {
+            this.progressbar0.destroy();
+            this.progressbar1.destroy();
+            
             this.game.state.start("GameState", true, false);
         }
 
