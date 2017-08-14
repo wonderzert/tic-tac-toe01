@@ -77,7 +77,18 @@ namespace Logic {
         * function will set action and action_ready
         * fields of Player
         */
-        send_human_action(playerAction: PlayerAction): void {
+        send_human_action(playerAction: PlayerAction): boolean {
+            if (this.ai) {
+                return false;
+            }
+
+            if (this.action_ready) {
+                return false;
+            }
+
+            this.action = playerAction;
+            this.action_ready = true;
+            return true;
         }
     }
 }

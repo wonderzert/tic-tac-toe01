@@ -31,7 +31,7 @@ namespace Logic {
                          ["", "", ""],
                          ["", "", ""]];
 
-            this.players = [new Player("x", false), new Player("o", true)];
+            this.players = [new Player("x", false), new Player("o", false)];
             this.turnCount = 0;
             this.currentPlayerIndex = 0;
         }
@@ -99,7 +99,7 @@ namespace Logic {
             }
 
             // check if position is not free for figure to put
-            if (!this.data[action.x][action.y]) {
+            if (!(this.data[action.x][action.y] == "")) {
                 return false;
             }
 
@@ -111,14 +111,52 @@ namespace Logic {
         * and switch active player for next turn
         * Will return false if action is impossible
         */
-        do_action(action: PlayerAction): boolean {
+        do_action(): boolean {
+            // ensure same action wont trigger do_action again
+            this.cur_player().action_ready = false;
+            
+            let action = this.cur_player().action;
             if (this.is_action_possible(action)) {
-                this.data[action.x][action.y] = this.players[this.currentPlayerIndex].figure;
+                this.data[action.x][action.y] = this.cur_player().figure;
                 this.switch_player();
+                this.turnCount++;
                 return true;
             } else {
                 return false;
             }
+        }
+
+        /**
+        * Use this function when you want to send
+        * input from GUI (like user clicked on cell)
+        * @param x {number} x-index of cell
+        * @param y {number} y-index of cell
+        * indexes will be reversed automatically so 
+        * x will be associated with horizontal order
+        * and y - with vertical order. 
+        * @return {boolean} false if current player is AI or 
+        * action is impossible
+        * and true if everything OK and map changed.
+        */
+        send_human_action(x: number, y: number): boolean {
+            return this.cur_player().send_human_action(
+                new PlayerAction(y, x)
+            );
+        }
+
+        // shortcut to current player's action_ready field
+        action_ready(): boolean {
+            return this.cur_player().action_ready;
+        }
+
+        // shortcut to current action
+        cur_action(): PlayerAction {
+            return this.cur_player().action;
+        }
+
+        // shortcut to current player
+        cur_player(): Player {
+            return this.players[this.currentPlayerIndex];
         }
     }
 }

@@ -42,6 +42,9 @@ namespace States {
 
             // load assets
             this.game.load.image("img/board.png", "img/board.png");
+            this.game.load.image("img/cell/white.png", "img/cell/white.png");
+            this.game.load.image("img/cell/x.png", "img/cell/x.png");
+            this.game.load.image("img/cell/o.png", "img/cell/o.png");
         }
 
         /**
