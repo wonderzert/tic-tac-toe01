@@ -103,7 +103,7 @@ module.exports = function(grunt) {
                 files: {
                     // 'destination.js': ['input1.js', 'input2.js']
                     // create bundle.js for production
-                    'build/dist/js/bundle.min.js': ['build/dev-dist/js/main.js', 'build/dev-dist/js/phaser.js']
+                    'build/dist/js/bundle.min.js': ['build/dev-dist/js/phaser.js', 'build/dev-dist/js/main.js']
                 }
             }
         },
