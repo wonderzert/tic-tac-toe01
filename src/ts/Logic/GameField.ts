@@ -21,6 +21,9 @@ namespace Logic {
         players: Player[];
         currentPlayerIndex: number;
 
+        // to lock field after win
+        locked: boolean;
+
         /**
         * number of turns. 9 turns => field is full and game should be ended
         */
@@ -34,6 +37,7 @@ namespace Logic {
             this.players = [new Player("x", false), new Player("o", false)];
             this.turnCount = 0;
             this.currentPlayerIndex = 0;
+            this.locked = false;
         }
 
         switch_player() {
@@ -82,6 +86,10 @@ namespace Logic {
             if ((this.data[2][0] == this.data[1][1]) && (this.data[1][1] == this.data[0][2]) && (this.data[0][2] != ""))
                 answer = [new Phaser.Point(2,0), new Phaser.Point(1,1), new Phaser.Point(0,2)];
 
+            if (answer.length > 0) {
+                this.locked = true;
+            }
+
             return answer;
         }
 
@@ -112,6 +120,11 @@ namespace Logic {
         do_action(): boolean {
             // ensure same action wont trigger do_action again
             this.cur_player().action_ready = false;
+
+            // do nothing if gameField is locked
+            if (this.locked) {
+                return false;
+            }
             
             let action = this.cur_player().action;
             if (this.is_action_possible(action)) {
