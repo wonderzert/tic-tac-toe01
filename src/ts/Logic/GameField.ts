@@ -45,44 +45,42 @@ namespace Logic {
         }
 
         /**
-        * Returns "" if nobody won,
-        * "x" if first player,
-        * "o" if second one. 
+        * Returns array of winning Phaser.Point s.
         */
-        check_win(): string {
-            let answer = "";
+        check_win(): Phaser.Point[] {
+            let answer = [];
 
             // first row
             if ((this.data[0][0] == this.data[0][1]) && (this.data[0][1] == this.data[0][2]))
-                answer = this.data[0][0];
+                answer = [new Phaser.Point(0,0), new Phaser.Point(0,1), new Phaser.Point(0,2)];
 
             // second row
             if ((this.data[1][0] == this.data[1][1]) && (this.data[1][1] == this.data[1][2]))
-                answer = this.data[1][0];
+                answer = [new Phaser.Point(1,0), new Phaser.Point(1,1), new Phaser.Point(1,2)];
 
             // third row
             if ((this.data[2][0] == this.data[2][1]) && (this.data[2][1] == this.data[2][2]))
-                answer = this.data[2][0];
+                answer = [new Phaser.Point(2,0), new Phaser.Point(2,1), new Phaser.Point(2,2)];
 
             // first column
             if ((this.data[0][0] == this.data[1][0]) && (this.data[1][0] == this.data[2][0]))
-                answer = this.data[0][0];
+                answer = [new Phaser.Point(0,0), new Phaser.Point(1,0), new Phaser.Point(2,0)];
 
             // second column
             if ((this.data[0][1] == this.data[1][1]) && (this.data[1][1] == this.data[2][1]))
-                answer = this.data[0][1];
+                answer = [new Phaser.Point(0,1), new Phaser.Point(1,1), new Phaser.Point(2,1)];
 
             // third column
             if ((this.data[0][2] == this.data[1][2]) && (this.data[1][2] == this.data[2][2]))
-                answer = this.data[0][2];
+                answer = [new Phaser.Point(0,2), new Phaser.Point(1,2), new Phaser.Point(2,2)];
 
             // first diagonal
             if ((this.data[0][0] == this.data[1][1]) && (this.data[1][1] == this.data[2][2]))
-                answer = this.data[0][0];
+                answer = [new Phaser.Point(0,0), new Phaser.Point(1,1), new Phaser.Point(2,2)];
 
             // second diagonal
             if ((this.data[2][0] == this.data[1][1]) && (this.data[1][1] == this.data[0][2]))
-                answer = this.data[2][0];
+                answer = [new Phaser.Point(2,0), new Phaser.Point(1,1), new Phaser.Point(0,2)];
 
             return answer;
         }
