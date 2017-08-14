@@ -42,6 +42,7 @@ namespace States {
             this.gameField = new Logic.GameField();
             this.board = this.game.add.sprite(0, 0, "img/board.png");
 
+            // cells have to be initialized
             this.cells = [];
 
             for (let x = 0; x < 3; x++) {
@@ -50,6 +51,7 @@ namespace States {
                     this.cells[x][y] = null;
                 }
             }
+            // end of cells initialization
 
 
             for (let x = 0; x < 3; x++) {
@@ -87,11 +89,26 @@ namespace States {
         */
         update() {
             if (this.gameField.action_ready()) {
+                // trigger both GUI and Logic subsystems
                 this.doActionAndSyncGui();
 
+                
+                // check for win
                 let win = this.gameField.check_win();
                 for (let i = 0; i < win.length; i++) {
+                    // color win cells in red
                     this.cells[win[i].x][win[i].y].tint = 0xff0000;
+                }
+
+                // check for draw
+                if (this.gameField.turnCount >= 9) {
+
+                    // color all cells in green
+                    for (let x = 0; x < 3; x++) {
+                        for (let y = 0; y < 3; y++) {
+                            this.cells[x][y].tint = 0x00ff00;
+                        }
+                    }
                 }
             }
         }
