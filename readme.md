@@ -9,4 +9,10 @@ Traditional old game implemented in HTML5
 1. `npm i --dev`
 1. `grunt build-dev`
 1. `python3 -m http.server`
-1. open your browser on url localhost:8000/build/dev-dist
+1. open your browser on url `http://localhost:8000/build/dev-dist`
+
+## How to build minimal zip to send on server
+`grunt zip`
+
+(you will find dist.zip in build dir)
+
