@@ -1,5 +1,7 @@
 /// <reference path="../../../vendor/ts/phaser.d.ts" />
 /// <reference path="../Utils/log.ts" />
+/// <reference path="../config.ts" />
+
 
 
 /**
@@ -10,6 +12,8 @@ namespace States {
     * State created to load game assets and show progress bar
     */
     export class PreloaderState extends Phaser.State {
+
+
         /**
         * Called first when state starts
         * Used to preload assets and etc.
@@ -18,6 +22,17 @@ namespace States {
         */
         preload() {
             Utils.log("PreloaderState started");
+
+            // empty progress bar image
+            let progressbar0 = this.game.add.sprite(0, Game.config.height, "img/progressbar0.png");
+            progressbar0.anchor.set(0, 1);
+
+            // full progress bar image
+            let progressbar1 = this.game.add.sprite(0, Game.config.height, "img/progressbar1.png");
+            progressbar1.anchor.set(0, 1);
+
+            // use phaser's internal progressbar mechanics
+            this.game.load.setPreloadSprite(progressbar1);
         }
 
         /**

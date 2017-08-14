@@ -37,8 +37,8 @@ module.exports = function(grunt) {
         // configure task provided by grunt-contrib-watch plugin
         watch: {
             dev: {
-                files: 'src/**/*', // which files will be watched for changes
-                tasks: ['typescript', 'copy:dev'] // which tasks will be performed on changed files
+                files: 'src/ts/**/*', // which files will be watched for changes
+                tasks: ['typescript'] // which tasks will be performed on changed files
             }
         },
         
@@ -46,10 +46,9 @@ module.exports = function(grunt) {
         browserSync: {
             dev: {
                 bsFiles: {
-                    // which files to host
+                    // which files to watch
                     src: [
-                        'build/dev-dist/**/*',
-                        'src/**/*' // for debugging with sourcemaps 
+                        'build/dev-dist/js/main.js'
                     ]
                 },
                 options: {

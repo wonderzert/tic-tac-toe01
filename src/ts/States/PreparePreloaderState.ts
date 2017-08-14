@@ -21,6 +21,9 @@ namespace States {
         */
         preload() {
             Utils.log("PreparePreloaderState started");
+
+            this.game.load.image("img/progressbar0.png", "img/progressbar0.png");
+            this.game.load.image("img/progressbar1.png", "img/progressbar1.png");
         }
 
         /**
@@ -31,7 +34,7 @@ namespace States {
         */
         create() {
             // start preloader
-            this.game.state.start("PreloaderState");
+            this.game.state.start("PreloaderState", false, false);
         }
 
         /**
