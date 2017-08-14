@@ -48,11 +48,15 @@ namespace States {
         * Called once preload is done
         * Used to create instances of all needed objects and
         * place them somewhere on screen
+        * PreloaderState will clear everything and
+        * launch GameState
         */
         create() {
+            // clear everything
             this.progressbar0.destroy();
             this.progressbar1.destroy();
-            
+
+            // launch GameState
             this.game.state.start("GameState", true, false);
         }
 
