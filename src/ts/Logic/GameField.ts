@@ -40,7 +40,7 @@ namespace Logic {
             this.locked = false;
         }
 
-        switch_player() {
+        switchPlayer() {
             if (this.currentPlayerIndex == 1) {
                 this.currentPlayerIndex = 0;
             } else {
@@ -51,7 +51,7 @@ namespace Logic {
         /**
         * Returns array of winning Phaser.Point s.
         */
-        check_win(): Phaser.Point[] {
+        checkWin(): Phaser.Point[] {
             let answer = [];
 
             // first row
@@ -93,7 +93,7 @@ namespace Logic {
             return answer;
         }
 
-        is_action_possible(action: PlayerAction): boolean {
+        isActionPossible(action: PlayerAction): boolean {
             // check x range
             if ((action.x < 0) || (action.x > 2)) {
                 return false;
@@ -117,19 +117,19 @@ namespace Logic {
         * and switch active player for next turn
         * Will return false if action is impossible
         */
-        do_action(): boolean {
-            // ensure same action wont trigger do_action again
-            this.cur_player().action_ready = false;
+        doAction(): boolean {
+            // ensure same action wont trigger doAction again
+            this.getCurrentPlayer().isActionReady = false;
 
             // do nothing if gameField is locked
             if (this.locked) {
                 return false;
             }
             
-            let action = this.cur_player().action;
-            if (this.is_action_possible(action)) {
-                this.data[action.x][action.y] = this.cur_player().figure;
-                this.switch_player();
+            let action = this.getCurrentPlayer().action;
+            if (this.isActionPossible(action)) {
+                this.data[action.x][action.y] = this.getCurrentPlayer().figure;
+                this.switchPlayer();
                 this.turnCount++;
                 return true;
             } else {
@@ -149,24 +149,24 @@ namespace Logic {
         * action is impossible
         * and true if everything OK and map changed.
         */
-        send_human_action(x: number, y: number): boolean {
-            return this.cur_player().send_human_action(
+        sendHumanAction(x: number, y: number): boolean {
+            return this.getCurrentPlayer().sendHumanAction(
                 new PlayerAction(y, x)
             );
         }
 
-        // shortcut to current player's action_ready field
-        action_ready(): boolean {
-            return this.cur_player().action_ready;
+        // shortcut to current player's isActionReady field
+        isActionReady(): boolean {
+            return this.getCurrentPlayer().isActionReady;
         }
 
         // shortcut to current action
-        cur_action(): PlayerAction {
-            return this.cur_player().action;
+        getCurrentPlayerAction(): PlayerAction {
+            return this.getCurrentPlayer().action;
         }
 
         // shortcut to current player
-        cur_player(): Player {
+        getCurrentPlayer(): Player {
             return this.players[this.currentPlayerIndex];
         }
     }

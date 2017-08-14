@@ -69,7 +69,7 @@ namespace States {
                     // send data to logic part when cell clicked
                     cell.events.onInputDown.add(function(x, y, gameField) {
                         return function() {
-                            gameField.send_human_action(x, y);
+                            gameField.sendHumanAction(x, y);
                         }
                     }(x, y, this.gameField), this);
 
@@ -88,13 +88,13 @@ namespace States {
         * Called repeatedly once create function is done
         */
         update() {
-            if (this.gameField.action_ready()) {
+            if (this.gameField.isActionReady()) {
                 // trigger both GUI and Logic subsystems
                 this.doActionAndSyncGui();
 
                 
                 // check for win
-                let win = this.gameField.check_win();
+                let win = this.gameField.checkWin();
                 for (let i = 0; i < win.length; i++) {
                     // color win cells in red
                     this.cells[win[i].x][win[i].y].tint = 0xff0000;
@@ -129,10 +129,10 @@ namespace States {
         }
 
         doActionAndSyncGui() {
-            let player = this.gameField.cur_player();
-            let action = this.gameField.cur_action();
+            let player = this.gameField.getCurrentPlayer();
+            let action = this.gameField.getCurrentPlayerAction();
 
-            let actionSuccess = this.gameField.do_action();
+            let actionSuccess = this.gameField.doAction();
             if (actionSuccess) {
                 this.syncGui(player, action);
             }

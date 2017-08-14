@@ -13,11 +13,11 @@ namespace Utils {
     */
     export function log(msg: string): boolean {
         if (Game.config.debug) {
-            let debug_msg: string = 
+            let debugMessage: string = 
                 "[" + Date().toString() + "]" +
                 ": " + msg;
 
-            console.log(debug_msg);
+            console.log(debugMessage);
             return true;
         }
         return false;

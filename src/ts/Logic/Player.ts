@@ -28,23 +28,23 @@ namespace Logic {
     export class Player {
         figure: string; // "x" or "o"
         ai: boolean;
-        action_ready: boolean; // is Player ready to say where he will put his figure
+        isActionReady: boolean; // is Player ready to say where he will put his figure
         action: PlayerAction; // data about where Player will put his figure
 
         constructor(figure: string = "x", ai: boolean = false) {
             this.figure = figure;
             this.ai = ai;
 
-            this.action_ready = false;
+            this.isActionReady = false;
         }
 
         /**
         * Return PlayerAction that human or ai choosen. 
-        * Check Player.action_ready before run
+        * Check Player.isActionReady before run
         * or it will throw Exception
         */
-        get_action(): PlayerAction {
-            if (!this.action_ready) {
+        getAction(): PlayerAction {
+            if (!this.isActionReady) {
                 throw new Error("Action wasn't ready to get");
             } else {
                 return this.action;
@@ -52,42 +52,29 @@ namespace Logic {
         }
 
         /**
-        * Ask Player to do action
-        */
-        ask_action(map: GameField): void {
-            // ensure action is not ready before 
-            // Player think about it
-            this.action_ready = false;
-
-            if (this.ai) {
-                this.ai_action(map);
-            }
-        }
-
-        /**
         * AI will automatically think
-        * and set action and action_ready 
+        * and set action and isActionReady 
         * fields of Player
         */
-        ai_action(map: GameField): void {
+        aiAction(map: GameField): void {
         }
 
         /**
         * Send user input from GUI to this object
-        * function will set action and action_ready
+        * function will set action and isActionReady
         * fields of Player
         */
-        send_human_action(playerAction: PlayerAction): boolean {
+        sendHumanAction(playerAction: PlayerAction): boolean {
             if (this.ai) {
                 return false;
             }
 
-            if (this.action_ready) {
+            if (this.isActionReady) {
                 return false;
             }
 
             this.action = playerAction;
-            this.action_ready = true;
+            this.isActionReady = true;
             return true;
         }
     }
